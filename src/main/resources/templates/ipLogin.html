@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>IP Login Example!</title>
+</head>
+<body>
+<div th:if="${param.error}">
+    Invalid IP.
+</div>
+<div th:if="${param.logout}">
+    You have been logged out.
+</div>
+<form th:action="@{/ipVerify}" method="post">
+    <div><input type="submit" value="Sign In by IP"/></div>
+</form>
+</body>
+</html>
