@@ -1,26 +1,7 @@
-spring:
-  datasource:
-    url: jdbc:log4jdbc:mysql://127.0.0.1:3306/ss?useUnicode=true&characterEncoding=utf-8
-    username: root
-    password: root
-    driver-class-name: net.sf.log4jdbc.DriverSpy
-
 logging:
   level:
     org:
       springframework:
         security: trace
-    jdbc:
-      audit: OFF
-      sqlonly: OFF
-      resultset: OFF
-      connection: OFF
-      sqltiming: INFO
   file: ./log/spring-security.log
 
-admin:
-  security:
-    users-by-username-query: select username,password,valid_flag as enabled from admin_user where username = ?
-#    group-authorities-by-username-query: select u.username as username , ap.code as authority from amdin_user u ,admin_role r,admin_role_links arl,admin_perms ap,admin_role_prems_links arpl where u.id = arl.admin_id and arl.role_id = r.id and r.id = arpl.role_id and arpl.perm_id = ap.id and u.username = ?
-#    users-by-username-query: select g.id, g.group_name, ga.authority from groups g, group_members gm, group_authorities ga where gm.username = ? and g.id = ga.group_id and g.id = gm.group_id
-    authorities-by-username-query: select u.username as username , ap.code as authority from admin_user u ,admin_role r,admin_role_links arl,admin_perms ap,admin_role_prems_links arpl where u.id = arl.admin_id and arl.role_id = r.id and r.id = arpl.role_id and arpl.perm_id = ap.id and u.username = ?
