@@ -8,13 +8,14 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Created by xujingfeng on 2017/9/26.
  */
 public class IpAuthenticationProvider implements AuthenticationProvider {
 
-    final static Map<String, SimpleGrantedAuthority> ipAuthorityMap = new HashMap();
+    final static Map<String, SimpleGrantedAuthority> ipAuthorityMap = new ConcurrentHashMap<String, SimpleGrantedAuthority>();
 
     //维护一个ip白名单列表，每个ip对应一定的权限
     static {
